@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from '../general';
-
-import forhire from '../../assets/pictures/forHireGif.gif';
 import { useNavigate } from 'react-router';
 
 export interface HomeProps {}
@@ -59,7 +57,6 @@ const styles: StyleSheetCSS = {
         textAlign: 'center',
         marginBottom: 64,
         marginTop: 64,
-
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',

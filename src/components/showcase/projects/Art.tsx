@@ -1,7 +1,7 @@
 import React from 'react';
 
 import girlRun from '../../../assets/pictures/projects/art/girl-run.gif';
-import gsts from '../../../assets/pictures/projects/art/gsts.png';
+// gsts is no longer imported
 
 export interface ArtProjectsProps {}
 

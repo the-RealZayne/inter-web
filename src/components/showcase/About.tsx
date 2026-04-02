@@ -11,14 +11,14 @@ const About: React.FC<AboutProps> = (props) => {
         // add on resize listener
         <div className="site-page-content">
             {/* <img src={me} style={styles.topImage} alt="" /> */}
-            <h1 style={{ marginLeft: -16 }}>Welcome</h1>
-            <h3>I'm Henry Heffernan</h3>
+            <h1 style={{ marginLeft: -16 }}>Hey</h1>
+            <h3>I'm theRealZayne</h3>
             <br />
             <div className="text-block">
                 <p>
-                    I'm a software engineer currently working at Vercel! In May
-                    of 2022 I graduated from Rensselaer Polytechnic Institute
-                    with my BS in Computer Science.
+                    I'm a Gamer, Music Producer, Content Creator, and Outdoor Enthusiast. 
+                    Whether I'm dropping into Fortnite, producing a fire beat, or hiking the Appalachian Trail, 
+                    I’m all about living life to the fullest. Check out what I’m into, how to reach me and join me in my adventures!
                 </p>
                 <br />
                 <p>

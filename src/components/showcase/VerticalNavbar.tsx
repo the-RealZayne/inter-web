@@ -32,8 +32,8 @@ const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
     return !isHome ? (
         <div style={styles.navbar}>
             <div style={styles.header}>
-                <h1 style={styles.headerText}>theRealZayne</h1>
-                <h1 style={styles.headerText}>ZayneCreations™</h1>
+                <h1 style={styles.headerText}>the</h1>
+                <h1 style={styles.headerText}>RealZayne™</h1>
                 <h3 style={styles.headerShowcase}>Showcase '26</h3>
             </div>
             <div style={styles.links}>

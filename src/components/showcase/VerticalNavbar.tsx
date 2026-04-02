@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from '../general';
-// forHire is no longer imported
+import forHire from '../../assets/pictures/forHireGif.gif';
 import { useLocation, useNavigate } from 'react-router';
 
 export interface VerticalNavbarProps {}
@@ -53,25 +53,28 @@ const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
                     to="projects"
                     text="PROJECTS"
                 />
-                {projectsExpanded && (
-                    <div style={styles.insetLinks}>
-                        <Link
-                            containerStyle={styles.insetLink}
-                            to="projects/software"
-                            text="SOFTWARE"
-                        />
-                        <Link
-                            containerStyle={styles.insetLink}
-                            to="projects/music"
-                            text="MUSIC"
-                        />
-                        <Link
-                            containerStyle={styles.insetLink}
-                            to="projects/art"
-                            text="ART"
-                        />
-                    </div>
-                )}
+                {
+                    // if current path contains projects
+                    projectsExpanded && (
+                        <div style={styles.insetLinks}>
+                            <Link
+                                containerStyle={styles.insetLink}
+                                to="projects/software"
+                                text="SOFTWARE"
+                            />
+                            <Link
+                                containerStyle={styles.insetLink}
+                                to="projects/music"
+                                text="MUSIC"
+                            />
+                            <Link
+                                containerStyle={styles.insetLink}
+                                to="projects/art"
+                                text="ART"
+                            />
+                        </div>
+                    )
+                }
                 <Link
                     containerStyle={styles.link}
                     to="contact"
@@ -140,6 +143,7 @@ const styles: StyleSheetCSS = {
     },
     forHireContainer: {
         cursor: 'pointer',
+
         width: '100%',
     },
 };

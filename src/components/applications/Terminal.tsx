@@ -7,9 +7,13 @@ export interface TerminalAppProps extends WindowAppProps {}
 const TerminalApp: React.FC<TerminalAppProps> = (props) => {
     const [width, setWidth] = useState(800);
     const [height, setHeight] = useState(600);
-    const [output, setOutput] = useState<string[]>(['Welcome to theRealZayne Terminal', 'Type "help" for available commands.', '']);
+    const [output, setOutput] = useState<string[]>([
+        'Welcome to theRealZayne Terminal',
+        'Type "help" for available commands.',
+        '',
+    ]);
     const [input, setInput] = useState('');
-    
+
     const inputRef = useRef<HTMLInputElement>(null);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -28,13 +32,12 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
 
         if (cmd === 'help') {
             newOutput.push('Available commands:');
-            newOutput.push('  ls - list directory contents');
-            newOutput.push('  pwd - print working directory');
-            newOutput.push('  clear - clear terminal');
-            newOutput.push('  echo [text] - echo text');
-            newOutput.push('  whoami - display current user');
-            newOutput.push('  date - display current date');
-            newOutput.push('  help - show this help');
+            newOutput.push('  ls      - list directory contents');
+            newOutput.push('  pwd     - print working directory');
+            newOutput.push('  clear   - clear terminal');
+            newOutput.push('  echo    - [text] echo text');
+            newOutput.push('  whoami  - display current user');
+            newOutput.push('  date    - display current date');
         } else if (cmd === 'ls') {
             newOutput.push('about.txt    contact.txt    experience.txt');
             newOutput.push('gaming.txt   music.txt      projects/');
@@ -51,9 +54,7 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
             newOutput.push('therealzayne');
         } else if (cmd === 'date') {
             newOutput.push(new Date().toString());
-        } else if (cmd === '') {
-            // empty command
-        } else {
+        } else if (cmd !== '') {
             newOutput.push(`Command not found: ${command}`);
         }
 
@@ -62,16 +63,14 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
         setInput('');
     };
 
-    const handleKeyPress = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             handleCommand(input);
         }
     };
 
     useEffect(() => {
-        if (inputRef.current) {
-            inputRef.current.focus();
-        }
+        inputRef.current?.focus();
     }, []);
 
     return (
@@ -92,10 +91,10 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
         >
             <div 
                 style={styles.terminal} 
-                onClick={() => inputRef.current?.focus()} // Focus input when clicking terminal
+                onClick={() => inputRef.current?.focus()}
             >
-                <div style={styles.output}>
-                    {output.map((line: string, index: number) => (
+                <div style={styles.outputContainer}>
+                    {output.map((line, index) => (
                         <div key={index} style={styles.line}>
                             {line === '' ? '\u00A0' : line}
                         </div>
@@ -103,14 +102,14 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
                     <div ref={messagesEndRef} />
                 </div>
                 <div style={styles.inputLine}>
-                    <span style={styles.prompt}>{'>'} </span>
+                    <span style={styles.prompt}>{'>'}</span>
                     <input
                         ref={inputRef}
                         type="text"
-                        value={input}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
-                        onKeyDown={handleKeyPress}
                         style={styles.input}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
                         autoFocus
                         spellCheck={false}
                         autoComplete="off"
@@ -126,45 +125,50 @@ const styles: Record<string, React.CSSProperties> = {
         backgroundColor: '#000',
         color: '#00FF00',
         fontFamily: '"Courier New", Courier, monospace',
-        fontSize: 14,
-        height: '100%',
+        fontSize: '14px',
         padding: '10px',
         display: 'flex',
         flexDirection: 'column',
+        height: '100%',
+        width: '100%',
         boxSizing: 'border-box',
-        cursor: 'text',
+        overflow: 'hidden',
     },
-    output: {
+    outputContainer: {
         flex: 1,
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
+        marginBottom: '10px',
     },
     line: {
+        display: 'block', // Force line breaks
+        width: '100%',
         whiteSpace: 'pre-wrap',
         wordBreak: 'break-all',
-        lineHeight: '1.4em',
-        minHeight: '1.4em', // Ensures empty strings take up a line
+        lineHeight: '1.5',
+        minHeight: '1.5em',
     },
     inputLine: {
         display: 'flex',
+        flexDirection: 'row',
         alignItems: 'center',
-        marginTop: '5px',
         flexShrink: 0,
     },
     prompt: {
-        marginRight: '8px',
+        color: '#00FF00',
+        marginRight: '10px',
         fontWeight: 'bold',
     },
     input: {
         backgroundColor: 'transparent',
         border: 'none',
+        outline: 'none',
         color: '#00FF00',
         fontFamily: 'monospace',
-        fontSize: 14,
+        fontSize: '14px',
         flex: 1,
-        outline: 'none',
-        caretColor: '#00FF00', // Classic terminal green cursor
+        padding: 0,
     },
 };
 

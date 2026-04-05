@@ -2,6 +2,16 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../showcase/Home';
 import About from '../showcase/About';
+import Zoogle from '../showcase/Zoogle';
+import Gaming from '../showcase/Gaming';
+import ContentCreation from '../showcase/ContentCreation';
+import Music from '../showcase/Music';
+import Community from '../showcase/Community';
+import Coding from '../showcase/Coding';
+import Collaborations from '../showcase/Collaborations';
+import OutdoorActivities from '../showcase/OutdoorActivities';
+import BookingSchedule from '../showcase/BookingSchedule';
+import Contribute from '../showcase/Contribute';
 import Window from '../os/Window';
 import Experience from '../showcase/Experience';
 import Projects from '../showcase/Projects';
@@ -39,6 +49,28 @@ const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
                         <Route path="/experience" element={<Experience />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/zoogle" element={<Zoogle />} />
+                        <Route path="/gaming" element={<Gaming />} />
+                        <Route
+                            path="/content-creation"
+                            element={<ContentCreation />}
+                        />
+                        <Route path="/music" element={<Music />} />
+                        <Route path="/community" element={<Community />} />
+                        <Route path="/coding" element={<Coding />} />
+                        <Route
+                            path="/collaborations"
+                            element={<Collaborations />}
+                        />
+                        <Route
+                            path="/outdoor-activities"
+                            element={<OutdoorActivities />}
+                        />
+                        <Route
+                            path="/booking-schedule"
+                            element={<BookingSchedule />}
+                        />
+                        <Route path="/contribute" element={<Contribute />} />
                         <Route
                             path="/projects/software"
                             element={<SoftwareProjects />}

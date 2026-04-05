@@ -11,6 +11,7 @@ import DesktopShortcut, { DesktopShortcutProps } from './DesktopShortcut';
 import Scrabble from '../applications/Scrabble';
 import { IconName } from '../../assets/icons';
 import Credits from '../applications/Credits';
+import Terminal from '../applications/Terminal';
 
 export interface DesktopProps {}
 
@@ -65,6 +66,12 @@ const APPLICATIONS: {
         name: 'Credits',
         shortcutIcon: 'credits',
         component: Credits,
+    },
+    terminal: {
+        key: 'terminal',
+        name: 'Terminal',
+        shortcutIcon: 'computerSmall',
+        component: Terminal,
     },
 };
 

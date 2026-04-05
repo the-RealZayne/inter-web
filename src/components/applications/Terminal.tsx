@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Window from '../os/Window';
 
+// Assuming WindowAppProps is defined globally or imported
 export interface TerminalAppProps extends WindowAppProps {}
 
 const TerminalApp: React.FC<TerminalAppProps> = (props) => {
@@ -8,7 +9,18 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
     const [height, setHeight] = useState(600);
     const [output, setOutput] = useState<string[]>(['Welcome to theRealZayne Terminal', 'Type "help" for available commands.', '']);
     const [input, setInput] = useState('');
+    
     const inputRef = useRef<HTMLInputElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to bottom whenever output changes
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [output]);
 
     const handleCommand = (command: string) => {
         const newOutput = [...output, `> ${command}`];
@@ -31,6 +43,7 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
             newOutput.push('/home/therealzayne');
         } else if (cmd === 'clear') {
             setOutput(['']);
+            setInput('');
             return;
         } else if (cmd.startsWith('echo ')) {
             newOutput.push(command.substring(5));
@@ -44,7 +57,7 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
             newOutput.push(`Command not found: ${command}`);
         }
 
-        newOutput.push('');
+        newOutput.push(''); // Spacing line
         setOutput(newOutput);
         setInput('');
     };
@@ -77,11 +90,17 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
             onWidthChange={setWidth}
             onHeightChange={setHeight}
         >
-            <div style={styles.terminal}>
+            <div 
+                style={styles.terminal} 
+                onClick={() => inputRef.current?.focus()} // Focus input when clicking terminal
+            >
                 <div style={styles.output}>
                     {output.map((line: string, index: number) => (
-                        <div key={index} style={styles.line}>{line}</div>
+                        <div key={index} style={styles.line}>
+                            {line === '' ? '\u00A0' : line}
+                        </div>
                     ))}
+                    <div ref={messagesEndRef} />
                 </div>
                 <div style={styles.inputLine}>
                     <span style={styles.prompt}>{'>'} </span>
@@ -90,9 +109,11 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
                         type="text"
                         value={input}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyPress}
                         style={styles.input}
                         autoFocus
+                        spellCheck={false}
+                        autoComplete="off"
                     />
                 </div>
             </div>
@@ -100,30 +121,40 @@ const TerminalApp: React.FC<TerminalAppProps> = (props) => {
     );
 };
 
-const styles: StyleSheetCSS = {
+const styles: Record<string, React.CSSProperties> = {
     terminal: {
         backgroundColor: '#000',
         color: '#00FF00',
-        fontFamily: 'monospace',
+        fontFamily: '"Courier New", Courier, monospace',
         fontSize: 14,
         height: '100%',
-        padding: 10,
+        padding: '10px',
         display: 'flex',
         flexDirection: 'column',
+        boxSizing: 'border-box',
+        cursor: 'text',
     },
     output: {
         flex: 1,
         overflowY: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
     },
     line: {
         whiteSpace: 'pre-wrap',
+        wordBreak: 'break-all',
+        lineHeight: '1.4em',
+        minHeight: '1.4em', // Ensures empty strings take up a line
     },
     inputLine: {
         display: 'flex',
         alignItems: 'center',
+        marginTop: '5px',
+        flexShrink: 0,
     },
     prompt: {
-        marginRight: 5,
+        marginRight: '8px',
+        fontWeight: 'bold',
     },
     input: {
         backgroundColor: 'transparent',
@@ -133,6 +164,7 @@ const styles: StyleSheetCSS = {
         fontSize: 14,
         flex: 1,
         outline: 'none',
+        caretColor: '#00FF00', // Classic terminal green cursor
     },
 };
 

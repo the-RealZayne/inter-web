@@ -39,11 +39,21 @@ const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
             <div style={styles.links}>
                 <Link containerStyle={styles.link} to="" text="HOME" />
                 <Link containerStyle={styles.link} to="about" text="ABOUT" />
+                <Link containerStyle={styles.link} to="zoogle" text="ZOOGLE" />
                 <Link
                     containerStyle={styles.link}
                     to="experience"
                     text="EXPERIENCE"
                 />
+                <Link containerStyle={styles.link} to="gaming" text="GAMING" />
+                <Link
+                    containerStyle={styles.link}
+                    to="content-creation"
+                    text="CONTENT CREATION"
+                />
+                <Link containerStyle={styles.link} to="music" text="MUSIC" />
+                <Link containerStyle={styles.link} to="community" text="COMMUNITY" />
+                <Link containerStyle={styles.link} to="coding" text="CODING" />
                 <Link
                     containerStyle={Object.assign(
                         {},
@@ -75,6 +85,26 @@ const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
                         </div>
                     )
                 }
+                <Link
+                    containerStyle={styles.link}
+                    to="collaborations"
+                    text="COLLABORATIONS"
+                />
+                <Link
+                    containerStyle={styles.link}
+                    to="outdoor-activities"
+                    text="OUTDOOR ACTIVITIES"
+                />
+                <Link
+                    containerStyle={styles.link}
+                    to="booking-schedule"
+                    text="BOOKING / SCHEDULE"
+                />
+                <Link
+                    containerStyle={styles.link}
+                    to="contribute"
+                    text="CONTRIBUTE"
+                />
                 <Link
                     containerStyle={styles.link}
                     to="contact"

@@ -50,7 +50,13 @@ const Zoogle: React.FC = () => {
 
         openWindow(
             `browser-${Date.now()}`,
-            <WebBrowser url={googleUrl} pageTitle={`Zoogle: ${trimmed}`} />,
+            <WebBrowser
+                url={googleUrl}
+                pageTitle={`Zoogle: ${trimmed}`}
+                onClose={() => {}}
+                onInteract={() => {}}
+                onMinimize={() => {}}
+            />,
             `Zoogle Search: ${trimmed}`,
             'windowExplorerIcon'
         );

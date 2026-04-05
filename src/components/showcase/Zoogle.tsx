@@ -1,5 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DesktopContext from '../os/DesktopContext';
+import WebBrowser from '../applications/WebBrowser';
 
 const pageOptions: Array<{ label: string; path: string }> = [
     { label: 'Home', path: '' },
@@ -21,6 +23,7 @@ const pageOptions: Array<{ label: string; path: string }> = [
 
 const Zoogle: React.FC = () => {
     const navigate = useNavigate();
+    const { openWindow } = useContext(DesktopContext);
     const [query, setQuery] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -44,7 +47,16 @@ const Zoogle: React.FC = () => {
         const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(
             trimmed
         )}`;
-        window.open(googleUrl, '_blank');
+
+        openWindow(
+            `browser-${Date.now()}`,
+            <WebBrowser url={googleUrl} pageTitle={`Zoogle: ${trimmed}`} />,
+            `Zoogle Search: ${trimmed}`,
+            'windowExplorerIcon'
+        );
+
+        setShowSuggestions(false);
+        setQuery('');
     };
 
     const handleSelect = (path: string) => {
@@ -67,8 +79,12 @@ const Zoogle: React.FC = () => {
             </div>
             <div style={styles.searchContainer}>
                 <div style={styles.logoRow}>
-                    <span style={styles.zLetter}>Z</span>
-                    <span style={styles.oLetters}>oogle</span>
+                    <span style={styles.logoLetterBlue}>Z</span>
+                    <span style={styles.logoLetterRed}>o</span>
+                    <span style={styles.logoLetterYellow}>o</span>
+                    <span style={styles.logoLetterBlue}>g</span>
+                    <span style={styles.logoLetterGreen}>l</span>
+                    <span style={styles.logoLetterRed}>e</span>
                 </div>
                 <div style={styles.searchBox}>
                     <input
@@ -95,7 +111,7 @@ const Zoogle: React.FC = () => {
                 </div>
                 {showSuggestions && (
                     <div style={styles.suggestions}>
-                        <h4 style={styles.suggestionsTitle}>Recent searches</h4>
+                        <h4 style={styles.suggestionsTitle}>Recent pages</h4>
                         {searchResults.map((page) => (
                             <button
                                 key={page.path}
@@ -111,8 +127,8 @@ const Zoogle: React.FC = () => {
             </div>
             <div style={styles.infoBlock}>
                 <p>
-                    Clicking a recent search opens that page immediately. Typing a query and
-                    pressing Enter runs a Google search in a new tab.
+                    Clicking a recent page opens it in the current showcase. Typing a query
+                    and pressing Enter opens a Google search in a new desktop window.
                 </p>
             </div>
         </div>
@@ -137,22 +153,32 @@ const styles: StyleSheetCSS = {
         maxWidth: 760,
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
     },
     logoRow: {
         display: 'flex',
         alignItems: 'center',
         marginBottom: 24,
     },
-    zLetter: {
+    logoLetterBlue: {
         fontSize: 72,
         fontWeight: 'bold',
         color: '#4285f4',
     },
-    oLetters: {
+    logoLetterRed: {
         fontSize: 72,
         fontWeight: 'bold',
         color: '#ea4335',
-        marginLeft: 6,
+    },
+    logoLetterYellow: {
+        fontSize: 72,
+        fontWeight: 'bold',
+        color: '#fbbc05',
+    },
+    logoLetterGreen: {
+        fontSize: 72,
+        fontWeight: 'bold',
+        color: '#34a853',
     },
     searchBox: {
         display: 'flex',

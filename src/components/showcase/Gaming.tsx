@@ -41,7 +41,7 @@ const Gaming: React.FC<GamingProps> = (props) => {
             <div className="text-block">
                 {/* --- Playstation Section --- */}
                 <p>
-                    <strong>Playstation :</strong><br /><br />
+                    <h2>Playstation :</h2><br /><br />
                     - <strong>Fortnite</strong>: I’m all about those clutch Victory Royales! Whether it’s building like a pro in Battle Royale or vibing in Creative mode...<br /><br />
                     - <strong>Call of Duty</strong>: Catch me at my finest! This is where i spend most of my gameplay. From MW3 to BO6 ill always show up for the kill!<br /><br />
                     - <strong>Rainbow 6: SIEGE</strong>: If theres a Tom Clancy game, chances are ive played it atleast once.<br /><br />
@@ -73,7 +73,7 @@ const Gaming: React.FC<GamingProps> = (props) => {
 
                 {/* --- Mobile Section --- */}
                 <p>
-                    <strong>Mobile :</strong><br /><br />
+                    <h2>Mobile :</h2><br /><br />
                     - <strong>Roblox</strong>: This platform is endless creativity. I play everything from intense shooters to chill hangout games.<br /><br />
                     - <strong>Egg Inc.</strong>: One of the <strong>BEST</strong> idle farmer games i've ever played!<br /><br />
                 </p>
@@ -100,7 +100,7 @@ const Gaming: React.FC<GamingProps> = (props) => {
 
                 {/* --- PC Section --- */}
                 <p>
-                    <strong>PC :</strong><br /><br />
+                    <h2>PC :</h2><br /><br />
                     - <strong>Minecraft</strong>: Building epic structures, surviving the night, or exploring with friends—Minecraft never gets old.<br /><br />
                     - <strong>Burglin' Gnomes</strong>: I've had soo much fun playing this game!<br /><br />
                 </p>

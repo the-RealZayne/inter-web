@@ -1,171 +1,77 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+// Replace with your actual icon/GIF paths
+import psIcon from '../../assets/pictures/projects/software.gif'; 
+import mobileIcon from '../../assets/pictures/projects/art.gif'; 
+import pcIcon from '../../assets/pictures/projects/music.gif';
 
-export interface GamingProps {}
+const Gaming: React.FC = () => {
+    const navigate = useNavigate();
 
-const Gaming: React.FC<GamingProps> = (props) => {
+    const categories = [
+        {
+            title: "Playstation",
+            subtitle: "CONSOLING",
+            route: "gaming-playstation",
+            icon: psIcon,
+        },
+        {
+            title: "Mobile",
+            subtitle: "ON THE GO",
+            route: "gaming-mobile",
+            icon: mobileIcon,
+        },
+        {
+            title: "PC Gaming",
+            subtitle: "MASTER RACE",
+            route: "gaming-pc",
+            icon: pcIcon,
+        }
+    ];
+
     return (
         <div className="site-page-content">
             <h1>Gaming</h1>
-            <h3>Let's Squad Up !</h3>
+            <h3>Let's Squad Up!</h3>
             <br />
-            <div className="text-block">
-                <p>
-                    Gaming is my vibe, and I’m always down for a good session.
-                    Here’s what I’m playing and why you should join me:
-                </p>
+            <p>
+                Gaming is my vibe, and I’m always down for a good session. 
+                Pick a platform below to see what I'm playing and vote on what we should play next!
+            </p>
+            <br />
+            <div style={styles.projectLinksContainer}>
+                {categories.map((cat, index) => (
+                    <div
+                        key={index}
+                        onMouseDown={() => navigate(`/${cat.route}`)}
+                        className="big-button-container"
+                        style={styles.projectLink}
+                    >
+                        <div style={styles.projectLinkLeft}>
+                            <img src={cat.icon} style={styles.projectLinkImage} alt="" />
+                            <div style={styles.projectText}>
+                                <h1 style={{ fontSize: 48, margin: 0 }}>{cat.title}</h1>
+                                <h3 style={{ margin: 0 }}>{cat.subtitle}</h3>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
 
-            {/* PSN Stats - Centered and Enlarged to the sweet spot */}
-<div style={{ 
-    display: 'flex', 
-    justifyContent: 'center', 
-    margin: '4rem 0', // Increased margin for more breathing room
-    width: '100%'
-}}>
-    <a href="https://www.exophase.com/user/theRealZayne/" target="_blank" rel="noreferrer" style={{ display: 'inline-block' }}>
-        <img 
-            alt="PSN Stats"
-            src="https://card.exophase.com/2/0/319923.png?1773168393" 
-            style={{ 
-                borderRadius: '12px', 
-                boxShadow: '0 8px 30px rgba(0,0,0,0.6)',
-                transform: 'scale(1.35)', // Pushed from 1.15 to 1.35
-                maxWidth: '70%', // Prevents overflow while scaled
-                height: 'auto',
-                transition: 'transform 0.3s ease' // Nice little hover effect prep
-            }}
-        />
-    </a>
-</div>
-
-            <div className="text-block">
-                {/* --- Playstation Section --- */}
-                <p>
-                    <h2>Playstation :</h2><br /><br />
-                    - <strong>Fortnite</strong>: I’m all about those clutch Victory Royales! Whether it’s building like a pro in Battle Royale or vibing in Creative mode...<br /><br />
-                    - <strong>Call of Duty</strong>: Catch me at my finest! This is where i spend most of my gameplay. From MW3 to BO6 ill always show up for the kill!<br /><br />
-                    - <strong>Rainbow 6: SIEGE</strong>: If theres a Tom Clancy game, chances are ive played it atleast once.<br /><br />
-                </p>
-
-                {/* Centered Poll Table 1 */}
-                <div style={styles.pollWrapper}>
-                    <table style={styles.tableMain}>
-                        <tbody>
-                            <tr>
-                                <td style={styles.tableLinkCell}>
-                                    <a href="https://widgetbite.com/polls/72b376da-0444-47b5-8d1a-dc16d5050067/options/1/vote">👉 COD</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/72b376da-0444-47b5-8d1a-dc16d5050067/options/2/vote">👉 Ark Raiders</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/72b376da-0444-47b5-8d1a-dc16d5050067/options/3/vote">👉 GTA V</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/72b376da-0444-47b5-8d1a-dc16d5050067/options/4/vote">👉 Rainbow 6</a>
-                                </td>
-                                <td style={{ verticalAlign: 'top' }}>
-                                    <div style={{ textAlign: 'center' }}>
-                                        <img alt="Poll Results" src="https://widgetbite.com/polls/72b376da-0444-47b5-8d1a-dc16d5050067/results" style={styles.pollImg} />
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {/* --- Mobile Section --- */}
-                <p>
-                    <h2>Mobile :</h2><br /><br />
-                    - <strong>Roblox</strong>: This platform is endless creativity. I play everything from intense shooters to chill hangout games.<br /><br />
-                    - <strong>Egg Inc.</strong>: One of the <strong>BEST</strong> idle farmer games i've ever played!<br /><br />
-                </p>
-
-                {/* Centered Poll Table 2 */}
-                <div style={styles.pollWrapper}>
-                    <table style={styles.tableMain}>
-                        <tbody>
-                            <tr>
-                                <td style={styles.tableLinkCell}>
-                                    <a href="https://widgetbite.com/polls/d41b2786-809a-4a66-a3cf-57180729320f/options/1/vote">👉 Roblox</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/d41b2786-809a-4a66-a3cf-57180729320f/options/2/vote">👉 Egg Inc.</a>
-                                </td>
-                                <td style={{ verticalAlign: 'top' }}>
-                                    <div style={{ textAlign: 'center' }}>
-                                        <img alt="Poll Results" src="https://widgetbite.com/polls/d41b2786-809a-4a66-a3cf-57180729320f/results" style={styles.pollImg} />
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {/* --- PC Section --- */}
-                <p>
-                    <h2>PC :</h2><br /><br />
-                    - <strong>Minecraft</strong>: Building epic structures, surviving the night, or exploring with friends—Minecraft never gets old.<br /><br />
-                    - <strong>Burglin' Gnomes</strong>: I've had soo much fun playing this game!<br /><br />
-                </p>
-
-                {/* Centered Poll Table 3 */}
-                <div style={styles.pollWrapper}>
-                    <table style={styles.tableMain}>
-                        <tbody>
-                            <tr>
-                                <td style={styles.tableLinkCell}>
-                                    <a href="https://widgetbite.com/polls/5ac6cd5f-4d31-4837-a713-a0827aa9bf33/options/1/vote">👉 Minecraft</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/5ac6cd5f-4d31-4837-a713-a0827aa9bf33/options/2/vote">👉 Roblox</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/5ac6cd5f-4d31-4837-a713-a0827aa9bf33/options/3/vote">👉 Burglin' Gnomes</a>
-                                    <hr />
-                                    <a href="https://widgetbite.com/polls/5ac6cd5f-4d31-4837-a713-a0827aa9bf33/options/4/vote">👉 Fortnite</a>
-                                </td>
-                                <td style={{ verticalAlign: 'top' }}>
-                                    <div style={{ textAlign: 'center' }}>
-                                        <img alt="Poll Results" src="https://widgetbite.com/polls/5ac6cd5f-4d31-4837-a713-a0827aa9bf33/results" style={styles.pollImg} />
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            {/* Counter Widget */}
-            <div style={{ textAlign: 'center', margin: '3rem 0' }}>
+            {/* Global Visitor Counter */}
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                 <div className="elfsight-app-cdf1e580-1e4a-4c61-9afa-a14fc83ab41f" data-elfsight-app-lazy></div>
             </div>
         </div>
     );
 };
 
-// Reusable styles for the poll blocks
 const styles: Record<string, React.CSSProperties> = {
-    pollWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        margin: '2.5rem 0',
-    },
-    tableMain: {
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        borderRadius: '12px',
-        padding: '20px',
-        width: '90%', // Enlarged width
-        maxWidth: '600px',
-        borderCollapse: 'separate',
-        borderSpacing: '15px 0',
-    },
-    tableLinkCell: {
-        verticalAlign: 'middle',
-        textAlign: 'left',
-        minWidth: '150px',
-        fontSize: '1.1rem', // Enlarged text
-    },
-    pollImg: {
-        width: '100%',
-        minWidth: '250px',
-        borderRadius: '8px',
-    }
+    projectLinksContainer: { display: 'flex', flexDirection: 'column', width: '100%' },
+    projectLink: { marginBottom: 24, cursor: 'pointer', width: '100%', display: 'flex', alignItems: 'center', padding: '10px 0' },
+    projectLinkLeft: { display: 'flex', alignItems: 'center', marginLeft: 16 },
+    projectLinkImage: { width: 56, height: 56, marginRight: 38 },
+    projectText: { display: 'flex', flexDirection: 'column', justifyContent: 'center' },
 };
 
 export default Gaming;

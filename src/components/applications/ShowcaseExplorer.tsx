@@ -16,6 +16,24 @@ import Window from '../os/Window';
 import Experience from '../showcase/Experience';
 import Projects from '../showcase/Projects';
 import Contact from '../showcase/Contact';
+
+// --- NEW SUB-PAGE IMPORTS ---
+// Gaming Sub-pages
+import GamingPS from '../showcase/GamingPS';
+import GamingPC from '../showcase/GamingPC';
+import GamingMobile from '../showcase/GamingMobile';
+
+// Coding Sub-pages
+import CodingMaps from '../showcase/CodingMaps';
+import CodingBots from '../showcase/CodingBots';
+import CodingWeb from '../showcase/CodingWeb';
+
+// Outdoor Sub-pages
+import OutdoorLand from '../showcase/OutdoorLand';
+import OutdoorWater from '../showcase/OutdoorWater';
+import OutdoorWinter from '../showcase/OutdoorWinter';
+// ----------------------------
+
 import SoftwareProjects from '../showcase/projects/Software';
 import MusicProjects from '../showcase/projects/Music';
 import ArtProjects from '../showcase/projects/Art';
@@ -44,41 +62,41 @@ const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
                 <div className="site-page">
                     <VerticalNavbar />
                     <Routes>
+                        {/* Main Pages */}
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/experience" element={<Experience />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/zoogle" element={<Zoogle />} />
-                        <Route path="/gaming" element={<Gaming />} />
-                        <Route
-                            path="/content-creation"
-                            element={<ContentCreation />}
-                        />
+                        <Route path="/content-creation" element={<ContentCreation />} />
                         <Route path="/music" element={<Music />} />
                         <Route path="/community" element={<Community />} />
-                        <Route path="/coding" element={<Coding />} />
-                        <Route
-                            path="/collaborations"
-                            element={<Collaborations />}
-                        />
-                        <Route
-                            path="/outdoor-activities"
-                            element={<OutdoorActivities />}
-                        />
-                        <Route
-                            path="/booking-schedule"
-                            element={<BookingSchedule />}
-                        />
+                        <Route path="/collaborations" element={<Collaborations />} />
+                        <Route path="/booking-schedule" element={<BookingSchedule />} />
                         <Route path="/contribute" element={<Contribute />} />
-                        <Route
-                            path="/projects/software"
-                            element={<SoftwareProjects />}
-                        />
-                        <Route
-                            path="/projects/music"
-                            element={<MusicProjects />}
-                        />
+
+                        {/* Gaming & Sub-pages */}
+                        <Route path="/gaming" element={<Gaming />} />
+                        <Route path="/gaming-playstation" element={<GamingPS />} />
+                        <Route path="/gaming-pc" element={<GamingPC />} />
+                        <Route path="/gaming-mobile" element={<GamingMobile />} />
+
+                        {/* Coding & Sub-pages */}
+                        <Route path="/coding" element={<Coding />} />
+                        <Route path="/coding-maps" element={<CodingMaps />} />
+                        <Route path="/coding-bots" element={<CodingBots />} />
+                        <Route path="/coding-web" element={<CodingWeb />} />
+
+                        {/* Outdoor & Sub-pages */}
+                        <Route path="/outdoor-activities" element={<OutdoorActivities />} />
+                        <Route path="/outdoor-land" element={<OutdoorLand />} />
+                        <Route path="/outdoor-water" element={<OutdoorWater />} />
+                        <Route path="/outdoor-winter" element={<OutdoorWinter />} />
+
+                        {/* Nested Project Pages */}
+                        <Route path="/projects/software" element={<SoftwareProjects />} />
+                        <Route path="/projects/music" element={<MusicProjects />} />
                         <Route path="/projects/art" element={<ArtProjects />} />
                     </Routes>
                 </div>

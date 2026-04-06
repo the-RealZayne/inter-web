@@ -33,7 +33,7 @@ const APPLICATIONS: {
     // },
     showcase: {
         key: 'showcase',
-        name: 'My Showcase',
+        name: 'PC-folio',
         shortcutIcon: 'showcaseIcon',
         component: ShowcaseExplorer,
     },
@@ -57,7 +57,7 @@ const APPLICATIONS: {
     },
     henordle: {
         key: 'henordle',
-        name: 'Henordle',
+        name: 'Zordle',
         shortcutIcon: 'henordleIcon',
         component: Henordle,
     },

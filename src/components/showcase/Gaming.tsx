@@ -15,21 +15,28 @@ const Gaming: React.FC<GamingProps> = (props) => {
                 </p>
             </div>
 
-            {/* PSN Stats - Centered and Enlarged */}
-            <div style={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                margin: '3rem 0',
-                transform: 'scale(1.15)', // Enlarges the card slightly
-            }}>
-                <a href="https://www.exophase.com/user/theRealZayne/" target="_blank" rel="noreferrer">
-                    <img 
-                        alt="PSN Stats"
-                        src="https://card.exophase.com/2/0/319923.png?1773168393" 
-                        style={{ borderRadius: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}
-                    />
-                </a>
-            </div>
+            {/* PSN Stats - Centered and Enlarged to the sweet spot */}
+<div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    margin: '4rem 0', // Increased margin for more breathing room
+    width: '100%'
+}}>
+    <a href="https://www.exophase.com/user/theRealZayne/" target="_blank" rel="noreferrer" style={{ display: 'inline-block' }}>
+        <img 
+            alt="PSN Stats"
+            src="https://card.exophase.com/2/0/319923.png?1773168393" 
+            style={{ 
+                borderRadius: '12px', 
+                boxShadow: '0 8px 30px rgba(0,0,0,0.6)',
+                transform: 'scale(1.35)', // Pushed from 1.15 to 1.35
+                maxWidth: '70%', // Prevents overflow while scaled
+                height: 'auto',
+                transition: 'transform 0.3s ease' // Nice little hover effect prep
+            }}
+        />
+    </a>
+</div>
 
             <div className="text-block">
                 {/* --- Playstation Section --- */}

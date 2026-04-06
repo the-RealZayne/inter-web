@@ -19,19 +19,19 @@ import Contact from '../showcase/Contact';
 
 // --- NEW SUB-PAGE IMPORTS ---
 // Gaming Sub-pages
-import GamingPS from '../showcase/GamingPS';
-import GamingPC from '../showcase/GamingPC';
-import GamingMobile from '../showcase/GamingMobile';
+import GamingPS from '../showcase/gaming/GamingPS';
+import GamingPC from '../showcase/gaming/GamingPC';
+import GamingMobile from '../showcase/gaming/GamingMobile';
 
 // Coding Sub-pages
-import CodingMaps from '../showcase/CodingMaps';
-import CodingBots from '../showcase/CodingBots';
-import CodingWeb from '../showcase/CodingWeb';
+import CodingMaps from '../showcase/coding/CodingMaps';
+import CodingBots from '../showcase/coding/CodingBots';
+import CodingWeb from '../showcase/coding/CodingWeb';
 
 // Outdoor Sub-pages
-import OutdoorLand from '../showcase/OutdoorLand';
-import OutdoorWater from '../showcase/OutdoorWater';
-import OutdoorWinter from '../showcase/OutdoorWinter';
+import OutdoorLand from '../showcase/outdoor/OutdoorLand';
+import OutdoorWater from '../showcase/outdoor/OutdoorWater';
+import OutdoorWinter from '../showcase/outdoor/OutdoorWinter';
 // ----------------------------
 
 import SoftwareProjects from '../showcase/projects/Software';
